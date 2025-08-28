@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { Box, CircularProgress, Typography } from '@mui/material';
+import React from "react";
+import { Box, CircularProgress, Typography } from "@mui/material";
 
 const LoadingSpinner: React.FC = () => {
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: '100vh',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "100vh",
         gap: 2,
       }}
     >

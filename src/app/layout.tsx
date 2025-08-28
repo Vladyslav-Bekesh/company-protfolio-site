@@ -8,7 +8,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "[Ваше Ім'я] - Розробник та Дизайнер",
-  description: "Особистий сайт-візитка розробника та дизайнера. Веб-розробка, мобільні додатки, UI/UX дизайн та консалтинг.",
+  description:
+    "Особистий сайт-візитка розробника та дизайнера. Веб-розробка, мобільні додатки, UI/UX дизайн та консалтинг.",
 };
 
 export default function RootLayout({
@@ -20,9 +21,7 @@ export default function RootLayout({
     <html lang="uk" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
         <ThemeProvider>
-          <LocaleProvider>
-            {children}
-          </LocaleProvider>
+          <LocaleProvider>{children}</LocaleProvider>
         </ThemeProvider>
       </body>
     </html>

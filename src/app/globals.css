@@ -20,7 +20,12 @@ body {
 }
 
 /* Стабілізація розмірів шрифтів для всіх заголовків */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-size: inherit; /* Використовує розмір з MUI теми */
   line-height: inherit;
   margin: 0;
@@ -39,46 +44,46 @@ html {
 }
 
 /* Custom scrollbar */
-::-webkit-scrollbar { 
-  width: 8px; 
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-::-webkit-scrollbar-track { 
-  background: #f1f1f1; 
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
 
-::-webkit-scrollbar-thumb { 
-  background: #888; 
-  border-radius: 4px; 
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb:hover { 
-  background: #555; 
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 /* Dark theme scrollbar */
-[data-mui-color-scheme="dark"] ::-webkit-scrollbar-track { 
-  background: #2d2d2d; 
+[data-mui-color-scheme="dark"] ::-webkit-scrollbar-track {
+  background: #2d2d2d;
 }
 
-[data-mui-color-scheme="dark"] ::-webkit-scrollbar-thumb { 
-  background: #666; 
+[data-mui-color-scheme="dark"] ::-webkit-scrollbar-thumb {
+  background: #666;
 }
 
-[data-mui-color-scheme="dark"] ::-webkit-scrollbar-thumb:hover { 
-  background: #888; 
+[data-mui-color-scheme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #888;
 }
 
 /* Focus styles for accessibility */
-*:focus { 
-  outline: 2px solid #1976d2; 
-  outline-offset: 2px; 
+*:focus {
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
 }
 
 /* Selection styles */
-::selection { 
-  background-color: rgba(25, 118, 210, 0.2); 
-  color: inherit; 
+::selection {
+  background-color: rgba(25, 118, 210, 0.2);
+  color: inherit;
 }
 
 /* Print styles */

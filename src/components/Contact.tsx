@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Box,
   Container,
@@ -14,36 +14,32 @@ import {
   useMediaQuery,
   Alert,
   Snackbar,
-} from '@mui/material';
-import {
-  Send,
-  LocationOn,
-  Phone,
-  Email,
-  Schedule,
-} from '@mui/icons-material';
-import { useLocale } from '@/contexts/LocaleContext';
+} from "@mui/material";
+import { Send, LocationOn, Phone, Email, Schedule } from "@mui/icons-material";
+import { useLocale } from "@/contexts/LocaleContext";
 
 const Contact: React.FC = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const { t } = useLocale();
-  
+
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-  
-  const [snackbar, setSnackbar] = useState({
-    open: false,
-    message: '',
-    severity: 'success' as 'success' | 'error',
+    name: "",
+    email: "",
+    message: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "success" as "success" | "error",
+  });
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -51,67 +47,75 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Валідація форми
-    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+    if (
+      !formData.name.trim() ||
+      !formData.email.trim() ||
+      !formData.message.trim()
+    ) {
       setSnackbar({
         open: true,
-        message: 'Будь ласка, заповніть всі поля',
-        severity: 'error',
+        message: "Будь ласка, заповніть всі поля",
+        severity: "error",
       });
       return;
     }
 
-    if (!formData.email.includes('@')) {
+    if (!formData.email.includes("@")) {
       setSnackbar({
         open: true,
-        message: 'Будь ласка, введіть коректну email адресу',
-        severity: 'error',
+        message: "Будь ласка, введіть коректну email адресу",
+        severity: "error",
       });
       return;
     }
 
     // Тут можна додати логіку відправки форми
-    console.log('Form submitted:', formData);
-    
+    console.log("Form submitted:", formData);
+
     setSnackbar({
       open: true,
-      message: 'Дякуємо! Ваше повідомлення успішно відправлено.',
-      severity: 'success',
+      message: "Дякуємо! Ваше повідомлення успішно відправлено.",
+      severity: "success",
     });
 
     // Очищення форми
     setFormData({
-      name: '',
-      email: '',
-      message: '',
+      name: "",
+      email: "",
+      message: "",
     });
   };
 
   const handleCloseSnackbar = () => {
-    setSnackbar(prev => ({ ...prev, open: false }));
+    setSnackbar((prev) => ({ ...prev, open: false }));
   };
 
   const contactInfo = [
     {
-      icon: <LocationOn sx={{ fontSize: 40, color: theme.palette.primary.main }} />,
-      title: t('contact.address'),
-      content: 'Київ, Україна',
+      icon: (
+        <LocationOn sx={{ fontSize: 40, color: theme.palette.primary.main }} />
+      ),
+      title: t("contact.address"),
+      content: "Київ, Україна",
     },
     {
       icon: <Phone sx={{ fontSize: 40, color: theme.palette.primary.main }} />,
-      title: t('contact.phone'),
-      content: '+380 (XX) XXX-XX-XX',
+      title: t("contact.phone"),
+      content: "+380 (XX) XXX-XX-XX",
     },
     {
       icon: <Email sx={{ fontSize: 40, color: theme.palette.primary.main }} />,
-      title: 'Email',
-      content: 'your.email@example.com',
+      title: "Email",
+      content: "your.email@example.com",
     },
     {
-      icon: <Schedule sx={{ fontSize: 40, color: theme.palette.primary.main }} />,
-      title: t('contact.workingHours'),
-      content: 'Пн-Пт: 9:00 - 18:00',
+      icon: (
+        <Schedule sx={{ fontSize: 40, color: theme.palette.primary.main }} />
+      ),
+      title: t("contact.workingHours"),
+      content: "Пн-Пт: 9:00 - 18:00",
     },
   ];
 
@@ -120,35 +124,36 @@ const Contact: React.FC = () => {
       id="contact"
       sx={{
         py: 8,
-        backgroundColor: theme.palette.mode === 'dark' ? '#1e1e1e' : '#f5f5f5',
+        backgroundColor: theme.palette.mode === "dark" ? "#1e1e1e" : "#f5f5f5",
       }}
     >
       <Container maxWidth="lg">
-        <Box sx={{ textAlign: 'center', mb: 6 }}>
+        <Box sx={{ textAlign: "center", mb: 6 }}>
           <Typography
-            variant={isMobile ? 'h4' : 'h2'}
+            variant={isMobile ? "h4" : "h2"}
             component="h2"
             gutterBottom
             sx={{
               fontWeight: 600,
-              color: 'text.primary',
+              color: "text.primary",
               mb: 2,
             }}
           >
-            {t('contact.title')}
+            {t("contact.title")}
           </Typography>
-          
+
           <Typography
             variant="h6"
             component="p"
             sx={{
-              color: 'text.secondary',
+              color: "text.secondary",
               maxWidth: 800,
-              mx: 'auto',
+              mx: "auto",
               lineHeight: 1.7,
             }}
           >
-            Зв'яжіться зі мною для обговорення вашого проекту або отримання консультації
+            Зв'яжіться зі мною для обговорення вашого проекту або отримання
+            консультації
           </Typography>
         </Box>
 
@@ -162,17 +167,17 @@ const Contact: React.FC = () => {
                 gutterBottom
                 sx={{
                   fontWeight: 600,
-                  color: 'text.primary',
+                  color: "text.primary",
                   mb: 3,
                 }}
               >
                 Надіслати повідомлення
               </Typography>
-              
+
               <Box component="form" onSubmit={handleSubmit}>
                 <TextField
                   fullWidth
-                  label={t('contact.name')}
+                  label={t("contact.name")}
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
@@ -180,10 +185,10 @@ const Contact: React.FC = () => {
                   required
                   variant="outlined"
                 />
-                
+
                 <TextField
                   fullWidth
-                  label={t('contact.email')}
+                  label={t("contact.email")}
                   name="email"
                   type="email"
                   value={formData.email}
@@ -192,10 +197,10 @@ const Contact: React.FC = () => {
                   required
                   variant="outlined"
                 />
-                
+
                 <TextField
                   fullWidth
-                  label={t('contact.message')}
+                  label={t("contact.message")}
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
@@ -205,7 +210,7 @@ const Contact: React.FC = () => {
                   rows={4}
                   variant="outlined"
                 />
-                
+
                 <Button
                   type="submit"
                   variant="contained"
@@ -215,12 +220,12 @@ const Contact: React.FC = () => {
                     mt: 3,
                     px: 4,
                     py: 1.5,
-                    fontSize: '1.1rem',
+                    fontSize: "1.1rem",
                     fontWeight: 600,
                     borderRadius: 2,
                   }}
                 >
-                  {t('contact.send')}
+                  {t("contact.send")}
                 </Button>
               </Box>
             </Card>
@@ -233,37 +238,35 @@ const Contact: React.FC = () => {
                 <Grid item xs={12} sm={6} key={index}>
                   <Card
                     sx={{
-                      height: '100%',
-                      textAlign: 'center',
-                      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                      '&:hover': {
-                        transform: 'translateY(-4px)',
+                      height: "100%",
+                      textAlign: "center",
+                      transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                      "&:hover": {
+                        transform: "translateY(-4px)",
                         boxShadow: theme.shadows[4],
                       },
                     }}
                   >
                     <CardContent sx={{ p: 3 }}>
-                      <Box sx={{ mb: 2 }}>
-                        {info.icon}
-                      </Box>
-                      
+                      <Box sx={{ mb: 2 }}>{info.icon}</Box>
+
                       <Typography
                         variant="h6"
                         component="h4"
                         gutterBottom
                         sx={{
                           fontWeight: 600,
-                          color: 'text.primary',
+                          color: "text.primary",
                           mb: 1,
                         }}
                       >
                         {info.title}
                       </Typography>
-                      
+
                       <Typography
                         variant="body2"
                         sx={{
-                          color: 'text.secondary',
+                          color: "text.secondary",
                           lineHeight: 1.6,
                         }}
                       >
@@ -277,7 +280,13 @@ const Contact: React.FC = () => {
 
             {/* Additional Info */}
             <Box sx={{ mt: 4 }}>
-              <Card sx={{ p: 3, backgroundColor: theme.palette.primary.main, color: 'white' }}>
+              <Card
+                sx={{
+                  p: 3,
+                  backgroundColor: theme.palette.primary.main,
+                  color: "white",
+                }}
+              >
                 <Typography
                   variant="h6"
                   component="h4"
@@ -286,7 +295,7 @@ const Contact: React.FC = () => {
                 >
                   Чому обирають мене?
                 </Typography>
-                
+
                 <Box component="ul" sx={{ pl: 2, m: 0 }}>
                   <Typography component="li" variant="body2" sx={{ mb: 1 }}>
                     Більше 5 років досвіду в розробці
@@ -311,12 +320,12 @@ const Contact: React.FC = () => {
         open={snackbar.open}
         autoHideDuration={6000}
         onClose={handleCloseSnackbar}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
       >
         <Alert
           onClose={handleCloseSnackbar}
           severity={snackbar.severity}
-          sx={{ width: '100%' }}
+          sx={{ width: "100%" }}
         >
           {snackbar.message}
         </Alert>

@@ -47,5 +47,5 @@ export interface FormData {
 export interface SnackbarState {
   open: boolean;
   message: string;
-  severity: 'success' | 'error';
+  severity: "success" | "error";
 }
