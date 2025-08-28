@@ -77,7 +77,7 @@ const Footer: React.FC = () => {
   return (
     <Box
       sx={{
-        backgroundColor: 'background.paper',
+        backgroundColor: theme.palette.mode === 'dark' ? '#1e1e1e' : '#f5f5f5',
         borderTop: `1px solid ${theme.palette.divider}`,
         pt: 6,
         pb: 3,

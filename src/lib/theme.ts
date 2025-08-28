@@ -24,29 +24,44 @@ const lightTheme: ThemeOptions = {
   },
   typography: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontSize: 16,
+    body1: {
+      fontSize: '1rem',
+      lineHeight: 1.5,
+    },
+    body2: {
+      fontSize: '0.875rem',
+      lineHeight: 1.43,
+    },
     h1: {
       fontSize: '2.5rem',
       fontWeight: 300,
+      lineHeight: 1.2,
     },
     h2: {
       fontSize: '2rem',
       fontWeight: 400,
+      lineHeight: 1.2,
     },
     h3: {
       fontSize: '1.75rem',
       fontWeight: 400,
+      lineHeight: 1.2,
     },
     h4: {
       fontSize: '1.5rem',
       fontWeight: 400,
+      lineHeight: 1.2,
     },
     h5: {
       fontSize: '1.25rem',
       fontWeight: 400,
+      lineHeight: 1.2,
     },
     h6: {
       fontSize: '1rem',
       fontWeight: 500,
+      lineHeight: 1.2,
     },
   },
   components: {
@@ -93,6 +108,45 @@ const darkTheme: ThemeOptions = {
   },
   typography: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontSize: 16,
+    body1: {
+      fontSize: '1rem',
+      lineHeight: 1.5,
+    },
+    body2: {
+      fontSize: '0.875rem',
+      lineHeight: 1.43,
+    },
+    h1: {
+      fontSize: '2.5rem',
+      fontWeight: 300,
+      lineHeight: 1.2,
+    },
+    h2: {
+      fontSize: '2rem',
+      fontWeight: 400,
+      lineHeight: 1.2,
+    },
+    h3: {
+      fontSize: '1.75rem',
+      fontWeight: 400,
+      lineHeight: 1.2,
+    },
+    h4: {
+      fontSize: '1.5rem',
+      fontWeight: 400,
+      lineHeight: 1.2,
+    },
+    h5: {
+      fontSize: '1.25rem',
+      fontWeight: 400,
+      lineHeight: 1.2,
+    },
+    h6: {
+      fontSize: '1rem',
+      fontWeight: 500,
+      lineHeight: 1.2,
+    },
   },
   components: {
     MuiButton: {

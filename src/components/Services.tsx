@@ -69,7 +69,7 @@ const Services: React.FC = () => {
       id="services"
       sx={{
         py: 8,
-        backgroundColor: 'background.paper',
+        backgroundColor: theme.palette.mode === 'dark' ? '#121212' : '#f5f5f5',
       }}
     >
       <Container maxWidth="lg">
@@ -86,7 +86,7 @@ const Services: React.FC = () => {
           >
             {t('services.title')}
           </Typography>
-          
+
           <Typography
             variant="h6"
             component="p"
@@ -119,7 +119,7 @@ const Services: React.FC = () => {
                   <Box sx={{ mb: 2 }}>
                     {service.icon}
                   </Box>
-                  
+
                   <Typography
                     variant="h5"
                     component="h3"
@@ -132,7 +132,7 @@ const Services: React.FC = () => {
                   >
                     {service.title}
                   </Typography>
-                  
+
                   <Typography
                     variant="body2"
                     sx={{

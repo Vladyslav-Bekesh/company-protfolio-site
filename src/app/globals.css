@@ -9,21 +9,28 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  font-size: 16px; /* Фіксований базовий розмір шрифту */
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: inherit;
+  background: inherit;
+  font-size: 1rem; /* Забезпечує стабільність розміру */
+  line-height: 1.5;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Стабілізація розмірів шрифтів для всіх заголовків */
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit; /* Використовує розмір з MUI теми */
+  line-height: inherit;
+  margin: 0;
+}
+
+/* Стабілізація для параграфів */
+p {
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
 }
 
 /* Smooth scrolling for anchor links */
@@ -32,33 +39,46 @@ html {
 }
 
 /* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+::-webkit-scrollbar { 
+  width: 8px; 
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
+::-webkit-scrollbar-track { 
+  background: #f1f1f1; 
 }
 
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
+::-webkit-scrollbar-thumb { 
+  background: #888; 
+  border-radius: 4px; 
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+::-webkit-scrollbar-thumb:hover { 
+  background: #555; 
+}
+
+/* Dark theme scrollbar */
+[data-mui-color-scheme="dark"] ::-webkit-scrollbar-track { 
+  background: #2d2d2d; 
+}
+
+[data-mui-color-scheme="dark"] ::-webkit-scrollbar-thumb { 
+  background: #666; 
+}
+
+[data-mui-color-scheme="dark"] ::-webkit-scrollbar-thumb:hover { 
+  background: #888; 
 }
 
 /* Focus styles for accessibility */
-*:focus {
-  outline: 2px solid #1976d2;
-  outline-offset: 2px;
+*:focus { 
+  outline: 2px solid #1976d2; 
+  outline-offset: 2px; 
 }
 
 /* Selection styles */
-::selection {
-  background-color: rgba(25, 118, 210, 0.2);
-  color: inherit;
+::selection { 
+  background-color: rgba(25, 118, 210, 0.2); 
+  color: inherit; 
 }
 
 /* Print styles */

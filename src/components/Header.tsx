@@ -70,84 +70,60 @@ const Header: React.FC = () => {
   };
 
   return (
-    <AppBar
-      position="fixed"
-      sx={{
-        backgroundColor: 'rgba(255, 255, 255, 0.95)',
-        backdropFilter: 'blur(10px)',
-        boxShadow: '0 2px 20px rgba(0, 0, 0, 0.1)',
-        zIndex: theme.zIndex.drawer + 1,
-      }}
-    >
-      <Toolbar sx={{ justifyContent: 'space-between' }}>
-        {/* Logo/Brand */}
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{
-            fontWeight: 700,
-            color: 'text.primary',
-            cursor: 'pointer',
-          }}
-          onClick={() => handleNavigationClick('#home')}
-        >
-          [Ваше Ім'я]
-        </Typography>
-
-        {/* Desktop Navigation */}
-        {!isMobile && (
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            {navigationItems.map((item) => (
-              <Button
-                key={item.href}
-                color="inherit"
-                onClick={() => handleNavigationClick(item.href)}
-                sx={{
-                  color: 'text.primary',
-                  fontWeight: 500,
-                  '&:hover': {
-                    backgroundColor: 'rgba(25, 118, 210, 0.08)',
-                  },
-                }}
-              >
-                {item.label}
-              </Button>
-            ))}
-          </Box>
-        )}
-
-        {/* Right Side Controls */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          {/* Theme Toggle */}
-          <IconButton
-            onClick={toggleTheme}
+    <>
+      <AppBar
+        position="fixed"
+        sx={{
+          backgroundColor: theme.palette.mode === 'dark' 
+            ? 'rgba(30, 30, 30, 0.95)' 
+            : 'rgba(255, 255, 255, 0.95)',
+          backdropFilter: 'blur(10px)',
+          boxShadow: '0 2px 20px rgba(0, 0, 0, 0.1)',
+          zIndex: theme.zIndex.drawer + 1,
+        }}
+      >
+        <Toolbar sx={{ justifyContent: 'space-between' }}>
+          {/* Logo/Brand */}
+          <Typography
+            variant="h6"
+            component="div"
             sx={{
+              fontWeight: 700,
               color: 'text.primary',
-              '&:hover': {
-                backgroundColor: 'rgba(25, 118, 210, 0.08)',
-              },
+              cursor: 'pointer',
             }}
+            onClick={() => handleNavigationClick('#home')}
           >
-            {themeMode === 'light' ? <DarkMode /> : <LightMode />}
-          </IconButton>
+            [Ваше Ім'я]
+          </Typography>
 
-          {/* Language Selector */}
-          <IconButton
-            onClick={handleLanguageClick}
-            sx={{
-              color: 'text.primary',
-              '&:hover': {
-                backgroundColor: 'rgba(25, 118, 210, 0.08)',
-              },
-            }}
-          >
-            <Language />
-          </IconButton>
+          {/* Desktop Navigation */}
+          {!isMobile && (
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              {navigationItems.map((item) => (
+                <Button
+                  key={item.href}
+                  color="inherit"
+                  onClick={() => handleNavigationClick(item.href)}
+                  sx={{
+                    color: 'text.primary',
+                    fontWeight: 500,
+                    '&:hover': {
+                      backgroundColor: 'rgba(25, 118, 210, 0.08)',
+                    },
+                  }}
+                >
+                  {item.label}
+                </Button>
+              ))}
+            </Box>
+          )}
 
-          {/* Mobile Menu Button */}
-          {isMobile && (
+          {/* Right Side Controls */}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            {/* Theme Toggle */}
             <IconButton
-              onClick={handleMobileMenuToggle}
+              onClick={toggleTheme}
               sx={{
                 color: 'text.primary',
                 '&:hover': {
@@ -155,11 +131,40 @@ const Header: React.FC = () => {
                 },
               }}
             >
-              <MenuIcon />
+              {themeMode === 'light' ? <DarkMode /> : <LightMode />}
             </IconButton>
-          )}
-        </Box>
-      </Toolbar>
+
+            {/* Language Selector */}
+            <IconButton
+              onClick={handleLanguageClick}
+              sx={{
+                color: 'text.primary',
+                '&:hover': {
+                  backgroundColor: 'rgba(25, 118, 210, 0.08)',
+                },
+              }}
+            >
+              <Language />
+            </IconButton>
+
+            {/* Mobile Menu Button */}
+            {isMobile && (
+              <IconButton
+                onClick={handleMobileMenuToggle}
+                sx={{
+                  color: 'text.primary',
+                  '&:hover': {
+                    backgroundColor: 'rgba(25, 118, 210, 0.08)',
+                  },
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+            )}
+          </Box>
+        </Toolbar>
+      </AppBar>
+      <Toolbar /> {/* Spacer for fixed AppBar */}
 
       {/* Mobile Navigation Drawer */}
       <Drawer
@@ -245,7 +250,7 @@ const Header: React.FC = () => {
           English
         </MenuItem>
       </Menu>
-    </AppBar>
+    </>
   );
 };
 

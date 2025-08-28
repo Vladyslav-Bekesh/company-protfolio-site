@@ -120,7 +120,7 @@ const Contact: React.FC = () => {
       id="contact"
       sx={{
         py: 8,
-        backgroundColor: 'background.paper',
+        backgroundColor: theme.palette.mode === 'dark' ? '#1e1e1e' : '#f5f5f5',
       }}
     >
       <Container maxWidth="lg">

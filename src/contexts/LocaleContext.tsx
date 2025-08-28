@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { uk } from '@/lib/locales/uk';
 import { en } from '@/lib/locales/en';
+import LoadingSpinner from '@/components/LoadingSpinner';
 
 type Locale = 'uk' | 'en';
 
@@ -31,18 +32,25 @@ interface LocaleProviderProps {
 
 const locales = { uk, en };
 
-export const LocaleProvider: React.FC<LocaleProviderProps> = ({ children }) => {
+export const LocaleProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [locale, setLocaleState] = useState<Locale>('uk');
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Перевіряємо збережену мову в localStorage
+    setMounted(true);
+    
+    // Перевіряємо збережену локаль
     const savedLocale = localStorage.getItem('locale') as Locale;
     if (savedLocale && (savedLocale === 'uk' || savedLocale === 'en')) {
       setLocaleState(savedLocale);
     } else {
       // Перевіряємо мову браузера
-      const browserLocale = navigator.language.startsWith('uk') ? 'uk' : 'en';
-      setLocaleState(browserLocale);
+      const browserLang = navigator.language;
+      if (browserLang.startsWith('uk')) {
+        setLocaleState('uk');
+      } else {
+        setLocaleState('en');
+      }
     }
   }, []);
 
@@ -50,6 +58,22 @@ export const LocaleProvider: React.FC<LocaleProviderProps> = ({ children }) => {
     setLocaleState(newLocale);
     localStorage.setItem('locale', newLocale);
   };
+
+  // Показуємо loading state до гідратації
+  if (!mounted) {
+    return (
+      <LocaleContext.Provider value={{ 
+        locale: 'uk', 
+        setLocale, 
+        t: (key: string) => key, 
+        formatDate: (date: Date) => date.toLocaleDateString('uk'),
+        formatNumber: (number: number) => number.toString(),
+        formatCurrency: (amount: number) => `${amount} грн`
+      }}>
+        <LoadingSpinner />
+      </LocaleContext.Provider>
+    );
+  }
 
   // Функція для отримання перекладів
   const t = (key: string): string => {

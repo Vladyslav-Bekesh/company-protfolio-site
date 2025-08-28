@@ -52,7 +52,7 @@ const About: React.FC = () => {
       id="about"
       sx={{
         py: 8,
-        backgroundColor: 'background.default',
+        backgroundColor: theme.palette.mode === 'dark' ? '#121212' : '#ffffff',
       }}
     >
       <Container maxWidth="lg">

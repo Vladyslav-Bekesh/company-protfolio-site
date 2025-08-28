@@ -112,7 +112,7 @@ const Portfolio: React.FC = () => {
       id="portfolio"
       sx={{
         py: 8,
-        backgroundColor: 'background.default',
+        backgroundColor: theme.palette.mode === 'dark' ? '#121212' : '#ffffff',
       }}
     >
       <Container maxWidth="lg">

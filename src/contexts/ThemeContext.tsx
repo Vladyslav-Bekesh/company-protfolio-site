@@ -4,6 +4,7 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 import { ThemeProvider as MuiThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { lightTheme, darkTheme } from '@/lib/theme';
+import LoadingSpinner from '@/components/LoadingSpinner';
 
 type ThemeMode = 'light' | 'dark';
 
@@ -28,8 +29,11 @@ interface ThemeProviderProps {
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [themeMode, setThemeMode] = useState<ThemeMode>('light');
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+    
     // Перевіряємо збережену тему в localStorage
     const savedTheme = localStorage.getItem('theme-mode') as ThemeMode;
     if (savedTheme) {
@@ -47,7 +51,34 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     localStorage.setItem('theme-mode', newTheme);
   };
 
-  const theme = createTheme(themeMode === 'light' ? lightTheme : darkTheme);
+  // Показуємо loading state до гідратації
+  if (!mounted) {
+    return (
+      <ThemeContext.Provider value={{ themeMode: 'light', toggleTheme }}>
+        <MuiThemeProvider theme={createTheme(lightTheme)}>
+          <CssBaseline />
+          <LoadingSpinner />
+        </MuiThemeProvider>
+      </ThemeContext.Provider>
+    );
+  }
+
+  const theme = createTheme({
+    ...(themeMode === 'light' ? lightTheme : darkTheme),
+    // Додаткові налаштування для стабілізації
+    shape: {
+      borderRadius: 8,
+    },
+    spacing: 8,
+    // Забезпечуємо стабільність типографіки
+    typography: {
+      ...(themeMode === 'light' ? lightTheme : darkTheme).typography,
+      // Додаткові гарантії стабільності
+      allVariants: {
+        fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+      },
+    },
+  });
 
   return (
     <ThemeContext.Provider value={{ themeMode, toggleTheme }}>
